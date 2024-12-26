@@ -1,5 +1,5 @@
 #plantilla para preposesar la base de datos
-# importar el dataset
+#importar el dataset
 #la posicion empieza de 1 y no en cero en spider
 dataset = read.csv('C:/Users/david/Music/MachingLearning/Problemas/1-ejercicio/Data.csv')
 
@@ -54,10 +54,24 @@ prediccion_enviar = subset(dataset, dividir == TRUE)
 testeo_enviar = subset(dataset, dividir == FALSE)
 
 
+# Escalado de valores: Normalizamos las columnas seleccionadas para que tengan media 0 y desviación estándar 1
+# Escalar las columnas 2 y 3 del conjunto de predicción
+prediccion_enviar[, 2:3] = scale(prediccion_enviar[, 2:3])  
+# `scale()` ajusta cada columna seleccionada para que tenga media 0 y desviación estándar 1
+# Esto es útil para modelos que son sensibles a las magnitudes de las variables
+
+# Escalar las columnas 2 y 3 del conjunto de prueba
+testeo_enviar[, 2:3] = scale(testeo_enviar[, 2:3])  
+# Aplica el mismo proceso de normalización al conjunto de prueba
+# Nota: Las columnas deben contener valores numéricos para aplicar `scale()`. Si las columnas no están en formato
+# numérico, primero hay que convertirlas.
 
 
-
-
+####################### escalado de datos
+# Convertir columnas seleccionadas a tipo entero si necesario
+# Por ejemplo, si las columnas contienen valores categóricos codificados, se convierten antes del escalado:
+prediccion_enviar[, 2:3] = as.integer(prediccion_enviar[, 2:3])  # Asegurar que las columnas sean enteros
+testeo_enviar[, 2:3] = as.integer(testeo_enviar[, 2:3])          # Asegurar lo mismo en el conjunto de prueba
 
 
 
