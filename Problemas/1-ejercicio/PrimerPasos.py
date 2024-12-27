@@ -61,11 +61,12 @@ x_prediccion, x_entrenamiento, y_prediccion, y_entrenamiento = train_test_split(
 # - `x_entrenamiento` y `y_entrenamiento` contienen los datos para entrenar el modelo.
 # - `x_prediccion` y `y_prediccion` se usarán para evaluar el modelo en datos no vistos.
 
-# Escalar variables para normalizar sus valores y mejorar el rendimiento de los modelos de machine learning
-from sklearn.preprocessing import StandardScaler  # Importar la clase StandardScaler para la estandarización de datos
 
 
 #### escalado de datos
+# Escalar variables para normalizar sus valores y mejorar el rendimiento de los modelos de machine learning
+from sklearn.preprocessing import StandardScaler  # Importar la clase StandardScaler para la estandarización de datos
+
 # Crear un objeto escalador que se utilizará para estandarizar los datos
 escalador_x = StandardScaler()  
 
@@ -76,13 +77,6 @@ x_entre = escalador_x.fit_transform(x_entrenamiento)
 # Aplicar la transformación al conjunto de prueba usando los parámetros calculados en los datos de entrenamiento
 # (media y desviación estándar previamente calculadas)
 x_predi = escalador_x.transform(x_prediccion)
-
-
-
-
-
-
-
 
 
 
